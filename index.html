@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ur">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mubashir Khan Browser</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#111827,#1e3a8a);color:#fff;min-height:100vh}
+header{padding:12px;display:flex;gap:8px;align-items:center;background:#0b1220}
+button{border:0;border-radius:10px;padding:10px 13px;background:#374151;color:#fff;font-size:16px}
+input{flex:1;padding:13px;border:0;border-radius:10px;font-size:16px;outline:none}
+.go,.searchbtn{background:#2563eb}
+main{max-width:850px;margin:70px auto;padding:24px;text-align:center}
+.logo{width:90px;height:90px;border-radius:24px;background:#2563eb;display:grid;place-items:center;margin:auto;font-size:44px;font-weight:bold}
+h1{font-size:38px;margin:18px 0 8px}
+p{color:#cbd5e1}
+.search{display:flex;gap:8px;margin:28px auto;max-width:720px}
+.quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+<button onclick="history.back()">‹</button>
+<button onclick="history.forward()">›</button>
+<button onclick="location.reload()">↻</button>
+<input id="url" placeholder="Search Google or enter website"
+onkeydown="if(event.key==='Enter')go()">
+<button class="go" onclick="go()">Go</button>
+</header>
+<main>
+<div class="logo">M</div>
+<h1>Mubashir Khan Browser 🌐</h1>
+<p>آپ کا اپنا سادہ اور مفت browser</p>
+<div class="search">
+<input id="q" placeholder="Google پر کچھ تلاش کریں"
+onkeydown="if(event.key==='Enter')search()">
+<button class="searchbtn" onclick="search()">Search</button>
+</div>
+<div class="quick">
+<button onclick="openSite('https://www.google.com')">Google</button>
+<button onclick="openSite('https://www.youtube.com')">YouTube</button>
+<button onclick="openSite('https://www.wikipedia.org')">Wikipedia</button>
+</div>
+</main>
+<script>
+function openSite(u){location.href=u}
+function go(){
+ let v=document.getElementById('url').value.trim();
+ if(!v)return;
+ if(!/^https?:\/\//i.test(v))v='https://www.google.com/search?q='+encodeURIComponent(v);
+ location.href=v;
+}
+function search(){
+ let v=document.getElementById('q').value.trim();
+ if(v)location.href='https://www.google.com/search?q='+encodeURIComponent(v);
+}
+</script>
+</body>
+</html>
